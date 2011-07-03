@@ -72,15 +72,13 @@ end
 
 local OnPowerUpdate
 do
-	local UnitPower, UnitPowerType = UnitPower, UnitPowerType
+	local UnitPower = UnitPower
 	OnPowerUpdate = function(self)
 		local unit = self.__owner.unit
 		local mana = UnitPower(unit, SPELL_POWER_MANA)
-        local powertype = UnitPowerType(unit)
         
-		if(powertype ~= self.powertype or mana ~= self.min) then
+		if(mana ~= self.min) then
 			self.min = mana
-            self.powertype = powertype
             
 			return Path(self.__owner, 'OnPowerUpdate', unit)
 		end
@@ -98,8 +96,9 @@ local Enable = function(self, unit)
 		else
 			self:RegisterEvent('UNIT_POWER', Path)
 		end
+        
+        self:RegisterEvent('UNIT_DISPLAYPOWER', Path)
         self:RegisterEvent('UNIT_MAXPOWER', Path)
-        --self:RegisterEvent('UPDATE_SHAPESHIFT_FORM', Path)
 
         if (not druidmana:GetStatusBarTexture()) then
 			druidmana:SetStatusBarTexture([=[Interface\TargetingFrame\UI-StatusBar]=])
@@ -117,8 +116,9 @@ local Disable = function(self)
         else
             self:UnregisterEvent('UNIT_POWER', Path)
         end
+        
+        self:UnregisterEvent('UNIT_DISPLAYPOWER', Path)
         self:UnregisterEvent('UNIT_MAXPOWER', Path)
-        --self:UnregisterEvent('UPDATE_SHAPESHIFT_FORM', Path)
     end
 end
 
