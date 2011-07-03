@@ -27,7 +27,7 @@ local function Update(self, event, unit)
     if (druidmana.PreUpdate) then druidmana:PreUpdate(unit) end
     
     --check form
-	if (UnitPowerType(unit) == 0) then
+	if (UnitPowerType(unit) == SPELL_POWER_MANA) then
         return druidmana:Hide()
     else
         druidmana:Show()
@@ -96,11 +96,10 @@ local Enable = function(self, unit)
         druidmana.ForceUpdate = ForceUpdate
 
         if(druidmana.frequentUpdates and unit == 'player') then
-			druidmana:SetScript("OnUpdate", OnPowerUpdate)
+			druidmana:SetScript('OnUpdate', OnPowerUpdate)
 		else
 			self:RegisterEvent('UNIT_POWER', Path)
 		end
-        self:RegisterEvent('UNIT_POWER', Path)
         self:RegisterEvent('UNIT_MAXPOWER', Path)
         --self:RegisterEvent('UPDATE_SHAPESHIFT_FORM', Path)
 
