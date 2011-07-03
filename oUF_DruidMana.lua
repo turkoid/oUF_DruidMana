@@ -9,7 +9,7 @@ if (select(2, UnitClass('player')) ~= 'DRUID') then return end
 
 --tag
 oUF.Tags['druidmana']  = function() 
-    local (min, max) = UnitPower('player', SPELL_POWER_MANA), UnitPowerMax('player', SPELL_POWER_MANA)
+    local min, max = UnitPower('player', SPELL_POWER_MANA), UnitPowerMax('player', SPELL_POWER_MANA)
         if (min ~= max) then 
         return min
     else
