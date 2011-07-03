@@ -1,8 +1,6 @@
 -- Druid Mana Bar for Cat and Bear forms
 -- Authors: Califpornia aka Ennie // some code taken from oUF`s EclipseBar element
 
-if not oUF then print"oUF_DruidMana: error: oUF not found" return end
-
 local _, ns = ...
 local oUF = ns.oUF or oUF
 assert(oUF, 'oUF_DruidManaBar was unable to locate oUF install')
