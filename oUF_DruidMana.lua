@@ -31,7 +31,7 @@ local function Update(self, event, unit, powertype)
     else
         druidmana:Show()
     end
-    if (tkLib) then tkLib.message('xp', 'updating') end
+    
     local min, max = UnitPower('player', SPELL_POWER_MANA), UnitPowerMax('player', SPELL_POWER_MANA)
     druidmana:SetMinMaxValues(0, max)
     druidmana:SetValue(min)
