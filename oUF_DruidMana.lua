@@ -19,9 +19,9 @@ end
 oUF.TagEvents['druidmana'] = 'UNIT_POWER UNIT_MAXPOWER'
 	
 local function Update(self, event, unit)
-	if(self.unit ~= unit) then return end
+    if(self.unit ~= unit) then return end
 
-	local druidmana = self.DruidMana
+    local druidmana = self.DruidMana
     if (druidmana.PreUpdate) then druidmana:PreUpdate(unit) end
     
     --check form
@@ -75,7 +75,7 @@ do
     local UnitPower = UnitPower
     OnPowerUpdate = function(self)
         local unit = self.__owner.unit
-        local mana = UnitPower(unit, SPELL_POWER_MANA)
+        local mana = UnitPower('player', SPELL_POWER_MANA)
 
         if(mana ~= self.min) then
             self.min = mana
