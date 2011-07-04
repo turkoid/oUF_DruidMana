@@ -39,7 +39,7 @@ local function Update(self, event, unit)
     if (druidmana.colorClass and UnitIsPlayer(unit)) then
         t = self.colors.class['DRUID']
     elseif (druidmana.colorSmooth) then
-        r, g, b = self.ColorGradient(min / max, unpack(health.smoothGradient or self.colors.smooth))
+        r, g, b = self.ColorGradient(min / max, unpack(druidmana.smoothGradient or self.colors.smooth))
     else
         t = self.colors.power['MANA']
     end
